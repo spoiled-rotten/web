@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "@/contexts/CartContext";
 import { AIPreferenceProvider } from "@/contexts/AIPreferenceContext";
-import { SpoiledOdometer } from "@/components/SpoiledOdometer";
+import { LuxurySpeedometer } from "@/components/LuxurySpeedometer";
 import { FloatingChat } from "@/components/FloatingChat";
 import Index from "./pages/Index";
 import Feed from "./pages/Feed";
@@ -29,7 +29,7 @@ const App = () => (
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
-            <SpoiledOdometer />
+            <LuxurySpeedometer />
             <FloatingChat />
           </BrowserRouter>
         </TooltipProvider>

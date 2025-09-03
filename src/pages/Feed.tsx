@@ -1,7 +1,7 @@
-import { FashionFeed } from "@/components/FashionFeed";
+import { InstagramFeed } from "@/components/InstagramFeed";
 
 const Feed = () => {
-  return <FashionFeed />;
+  return <InstagramFeed />;
 };
 
 export default Feed;
