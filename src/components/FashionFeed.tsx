@@ -8,7 +8,7 @@ import { Card } from '@/components/ui/card';
 import { toast } from 'sonner';
 import { 
   Heart, X, ShoppingBag, Bookmark, Share2, MessageCircle, 
-  TrendingUp, Users, Sparkles, Fire, Crown
+  TrendingUp, Users, Sparkles, Flame, Crown
 } from 'lucide-react';
 
 // Sample fashion items - in production, these would come from an API
@@ -189,7 +189,7 @@ export const FashionFeed = () => {
             
             <div className="flex items-center gap-2">
               <Button variant="ghost" size="sm" className="gap-2">
-                <Fire className="w-4 h-4 text-orange-500" />
+                <Flame className="w-4 h-4 text-orange-500" />
                 <span className="hidden sm:inline">Trending</span>
               </Button>
               <Button variant="ghost" size="sm" className="gap-2">
