@@ -30,57 +30,60 @@ interface PricingPlan {
 const plans: PricingPlan[] = [
   {
     id: 'starter',
-    name: 'STARTER',
-    description: 'Begin your luxury journey',
-    price: 49,
+    name: 'ESSENTIAL',
+    description: 'Start getting spoiled',
+    price: 69,
     period: '/month',
     icon: <Star className="w-6 h-6" />,
     color: 'from-gray-600 to-gray-500',
     features: [
       { text: 'AI Shopping Assistant', included: true },
-      { text: 'Up to $5,000 monthly spending', included: true },
-      { text: 'Basic product recommendations', included: true },
-      { text: 'Email support', included: true },
+      { text: 'Up to $10,000 monthly spending', included: true },
+      { text: 'Smart product recommendations', included: true },
+      { text: 'Priority email support', included: true },
+      { text: 'Exclusive member deals', included: true },
       { text: 'Personal shopper', included: false },
-      { text: 'VIP access to sales', included: false },
+      { text: 'VIP early access', included: false },
       { text: 'Concierge service', included: false },
     ],
   },
   {
     id: 'premium',
-    name: 'PREMIUM',
-    description: 'The complete luxury experience',
-    price: 199,
+    name: 'LUXE',
+    description: 'The ultimate shopping AI',
+    price: 299,
     period: '/month',
     icon: <Crown className="w-6 h-6" />,
     color: 'from-purple-600 to-pink-600',
     popular: true,
     features: [
-      { text: 'Advanced AI Shopping Assistant', included: true },
-      { text: 'Up to $25,000 monthly spending', included: true },
-      { text: 'Personalized AI recommendations', included: true },
-      { text: 'Priority support 24/7', included: true },
-      { text: 'Personal shopper', included: true },
-      { text: 'VIP access to sales', included: true },
+      { text: 'Advanced AI Shopping Brain', included: true },
+      { text: 'Up to $50,000 monthly spending', included: true },
+      { text: 'Hyper-personalized AI curation', included: true },
+      { text: '24/7 VIP support', included: true },
+      { text: 'Dedicated personal shopper', included: true },
+      { text: 'First access to drops', included: true },
+      { text: 'Private sale invites', included: true },
       { text: 'Concierge service', included: false },
     ],
   },
   {
     id: 'elite',
-    name: 'ELITE',
-    description: 'Unlimited luxury automation',
-    price: 999,
+    name: 'ROYALTY',
+    description: 'Infinite luxury, zero limits',
+    price: 1299,
     period: '/month',
     icon: <Gem className="w-6 h-6" />,
     color: 'from-yellow-500 to-yellow-400',
     features: [
-      { text: 'Elite AI Shopping Assistant', included: true },
-      { text: 'Unlimited monthly spending', included: true },
-      { text: 'White-glove AI service', included: true },
-      { text: 'Dedicated account manager', included: true },
-      { text: 'Personal shopper team', included: true },
-      { text: 'First access to everything', included: true },
-      { text: '24/7 Concierge service', included: true },
+      { text: 'Quantum AI Shopping Engine', included: true },
+      { text: 'Unlimited spending power', included: true },
+      { text: 'White-glove AI butler service', included: true },
+      { text: 'C-suite account executive', included: true },
+      { text: 'Celebrity stylist team', included: true },
+      { text: 'Pre-launch exclusive access', included: true },
+      { text: '24/7 luxury concierge', included: true },
+      { text: 'Private jet shopping trips', included: true },
     ],
   },
 ];
@@ -157,19 +160,23 @@ export default function Pricing() {
           </div>
 
           {/* Pricing Cards */}
-          <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {plans.map((plan) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+            {plans.map((plan, index) => (
               <motion.div
                 key={plan.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 whileHover={{ y: -5 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+                className={cn(
+                  "w-full",
+                  plan.popular && "md:col-span-2 lg:col-span-1"
+                )}
               >
                 <Card className={cn(
-                  "relative overflow-hidden bg-gray-950 border transition-all duration-300",
+                  "relative overflow-hidden bg-gray-950 border transition-all duration-300 h-full",
                   plan.popular 
-                    ? 'border-yellow-500/50 shadow-2xl shadow-yellow-500/20 scale-105' 
+                    ? 'border-yellow-500/50 shadow-2xl shadow-yellow-500/20 lg:scale-105' 
                     : 'border-gray-800 hover:border-gray-700'
                 )}>
                   {plan.popular && (
@@ -178,7 +185,7 @@ export default function Pricing() {
                     </div>
                   )}
                   
-                  <div className="p-8">
+                  <div className="p-6 sm:p-8">
                     {/* Plan header */}
                     <div className={cn(
                       "w-16 h-16 rounded-2xl bg-gradient-to-br flex items-center justify-center mb-4",

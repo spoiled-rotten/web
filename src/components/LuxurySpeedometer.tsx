@@ -68,11 +68,11 @@ export const LuxurySpeedometer = () => {
 
   return (
     <>
-      <div className="fixed bottom-6 left-6 z-50">
+      <div className="fixed bottom-6 left-6 z-50 pointer-events-none">
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className="relative w-48 h-48"
+          className="relative w-48 h-48 pointer-events-auto"
         >
           {/* Glass effect container */}
           <div className="absolute inset-0 rounded-full bg-black/80 backdrop-blur-xl border border-gray-800 shadow-2xl p-4">
