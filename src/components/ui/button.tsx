@@ -21,6 +21,8 @@ const buttonVariants = cva(
         luxury: "luxury-button bg-primary text-primary-foreground hover:luxury-glow",
         hero: "luxury-button bg-primary text-primary-foreground text-lg font-semibold px-8 py-6 rounded-2xl",
         premium: "luxury-button bg-gradient-to-r from-primary to-accent text-primary-foreground border border-primary/20",
+        gold: "luxury-button gold-accent text-black font-semibold",
+        gradient: "luxury-button brand-gradient border border-white/20 text-white"
       },
       size: {
         default: "h-10 px-4 py-2",
