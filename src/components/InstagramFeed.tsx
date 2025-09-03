@@ -1,18 +1,16 @@
 import { useState, useEffect, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Masonry from 'react-masonry-css';
 import { useCart } from '@/contexts/CartContext';
 import { useAIPreference, FashionItem } from '@/contexts/AIPreferenceContext';
-import { useAuth } from '@/contexts/AuthContext';
 import { useInView } from 'react-intersection-observer';
 import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { LotusLogo } from '@/components/LotusLogo';
+import { ModernHeader } from '@/components/ModernHeader';
+import { ModernFooter } from '@/components/ModernFooter';
 import { toast } from 'sonner';
 import { 
   Heart, ShoppingBag, Bookmark, Eye, TrendingUp, 
-  Users, Crown, Sparkles, Star, Share2, User, LogIn
+  Star, Share2
 } from 'lucide-react';
 
 // Generate more sample items
@@ -60,10 +58,8 @@ const generateFashionItems = (): FashionItem[] => {
 };
 
 export const InstagramFeed = () => {
-  const navigate = useNavigate();
   const { addToCart } = useCart();
   const { updatePreference } = useAIPreference();
-  const { user, isAuthenticated } = useAuth();
   const [items, setItems] = useState<FashionItem[]>([]);
   const [likedItems, setLikedItems] = useState<Set<string>>(new Set());
   const [savedItems, setSavedItems] = useState<Set<string>>(new Set());
@@ -168,58 +164,12 @@ export const InstagramFeed = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black">
-      {/* Header */}
-      <div className="sticky top-0 z-40 bg-black/90 backdrop-blur-xl border-b border-white/10">
-        <div className="max-w-screen-2xl mx-auto px-4 py-3">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <LotusLogo size={28} variant="gradient" />
-              <div>
-                <h1 className="text-xl font-bold tracking-wider">
-                  <span className="text-white">SPOILED</span>{' '}
-                  <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">ROTTEN</span>
-                </h1>
-              </div>
-            </div>
-            
-            <div className="flex items-center gap-4">
-              <button className="relative group">
-                <TrendingUp className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
-                <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full animate-pulse" />
-              </button>
-              <button className="group" onClick={() => toast.info('Social features coming soon!')}>
-                <Users className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
-              </button>
-              
-              {/* Auth Navigation */}
-              {isAuthenticated && user ? (
-                <Button
-                  onClick={() => navigate('/account')}
-                  variant="ghost"
-                  size="sm"
-                  className="flex items-center gap-2 text-gray-400 hover:text-white"
-                >
-                  <User className="w-5 h-5" />
-                  <span className="hidden sm:inline">{user.name.split(' ')[0]}</span>
-                </Button>
-              ) : (
-                <Button
-                  onClick={() => navigate('/login')}
-                  size="sm"
-                  className="bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-black font-medium"
-                >
-                  <LogIn className="w-4 h-4 mr-2" />
-                  Sign In
-                </Button>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="min-h-screen bg-black flex flex-col">
+      {/* Modern Header */}
+      <ModernHeader />
 
       {/* Masonry Grid */}
-      <div className="max-w-screen-2xl mx-auto p-4">
+      <div className="flex-grow max-w-screen-2xl mx-auto p-4 w-full">
         <Masonry
           breakpointCols={breakpointColumns}
           className="masonry-grid"
@@ -352,6 +302,9 @@ export const InstagramFeed = () => {
           background-clip: padding-box;
         }
       `}</style>
+      
+      {/* Modern Footer */}
+      <ModernFooter />
     </div>
   );
 };

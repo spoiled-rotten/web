@@ -5,7 +5,7 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { LotusLogo } from '@/components/LotusLogo';
+import { SpoiledRottenLogo } from '@/components/SpoiledRottenLogo';
 import { useAuth } from '@/contexts/AuthContext';
 import { 
   Mail, Lock, User, ArrowRight, Sparkles, 
@@ -71,15 +71,11 @@ export default function Signup() {
           <div className="p-8">
             {/* Logo */}
             <div className="flex justify-center mb-8">
-              <LotusLogo size={64} variant="gradient" />
+              <SpoiledRottenLogo size="lg" variant="gradient" />
             </div>
 
             {/* Header */}
-            <div className="text-center mb-8">
-              <h1 className="text-4xl font-bold mb-3 tracking-wider">
-                <span className="text-white">SPOILED</span>{' '}
-                <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">ROTTEN</span>
-              </h1>
+            <div className="text-center mb-4">
               <p className="text-gray-400">
                 Join the luxury revolution
               </p>

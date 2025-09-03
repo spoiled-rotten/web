@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '@/contexts/CartContext';
 import { createCheckoutSession } from '@/lib/stripe';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { LotusLogo } from '@/components/LotusLogo';
+import { SpoiledRottenLogo } from '@/components/SpoiledRottenLogo';
 import { 
   CreditCard, ShoppingBag, Loader2, CheckCircle, 
   X, Trash2, Plus, Minus, Lock, Shield, ArrowRight
@@ -31,6 +31,18 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
     city: '',
     zip: '',
   });
+
+  // Handle Escape key to close modal
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [isOpen, onClose]);
 
   const handleCheckout = async () => {
     if (!formData.email || !formData.name) {
@@ -104,16 +116,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
             <div className="border-b border-gray-800 bg-gray-950/50 backdrop-blur-xl">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <LotusLogo size={32} variant="gradient" />
-                    <div>
-                      <h1 className="text-xl font-bold tracking-wider">
-                        <span className="text-white">SPOILED</span>{' '}
-                        <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
-                          CHECKOUT
-                        </span>
-                      </h1>
-                    </div>
+                  <div className="flex items-center">
+                    <SpoiledRottenLogo size="md" variant="gradient" showLotus={true} />
                   </div>
                   <button
                     onClick={onClose}
