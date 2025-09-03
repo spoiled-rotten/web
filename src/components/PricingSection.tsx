@@ -1,61 +1,66 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Check, Crown, Diamond, Star, Sparkles, Gift, Zap } from "lucide-react";
+import { Check, Crown, Diamond, Star, Sparkles, Gift, Zap, Brain } from "lucide-react";
 
 const pricingTiers = [
   {
     name: "Spoiled",
-    price: "$69",
+    price: "$199",
     period: "/month",
-    description: "Perfect for regular treats & gifts",
-    icon: Star,
+    description: "AI learns and shops automatically",
+    icon: Brain,
     color: "from-emerald-500/20 to-emerald-600/10",
     accent: "border-emerald-500/30",
+    budget: "$1,000-5,000",
     features: [
-      "AI Shopping Assistant 24/7",
-      "Personal recommendations",
-      "Budget optimization",
-      "Gift suggestions for occasions",
-      "Basic concierge service",
-      "Email support"
+      "AI learns your preferences automatically",
+      "Monthly surprise packages delivered",
+      "Auto-gift occasions (birthdays, holidays)",
+      "Budget management & reporting",
+      "Clothing & accessories automation",
+      "Basic experience planning",
+      "Email preference updates"
     ]
   },
   {
     name: "Rotten",
-    price: "$199", 
+    price: "$499", 
     period: "/month",
-    description: "Elevated luxury shopping experience",
+    description: "Complete lifestyle automation",
     icon: Crown,
     popular: true,
     color: "from-purple-500/20 to-rose-500/10",
     accent: "border-purple-500/50",
+    budget: "$5,000-15,000",
     features: [
       "Everything in Spoiled",
-      "VIP brand partnerships",
-      "Exclusive sales access",
-      "Personal stylist consultation",
-      "Premium concierge service",
-      "Same-day delivery options",
-      "WhatsApp priority support"
+      "Auto-book experiences & events",
+      "Advanced gift AI for relationships",
+      "Home & lifestyle automation",
+      "Travel surprise planning",
+      "VIP access & reservations",
+      "White-glove delivery concierge",
+      "WhatsApp instant preferences"
     ]
   },
   {
     name: "Ultimate",
-    price: "$999",
+    price: "$1,999",
     period: "/month", 
-    description: "No limits, pure indulgence",
+    description: "Unlimited luxury automation",
     icon: Diamond,
     color: "from-yellow-500/20 to-amber-600/10",
     accent: "border-yellow-500/40",
+    budget: "No limits",
     features: [
       "Everything in Rotten",
-      "Unlimited shopping budget",
-      "Private label access",
-      "Personal shopper on-demand",
-      "White-glove delivery service",
-      "Exclusive events & experiences",
-      "Custom luxury sourcing",
-      "Dedicated account manager"
+      "Unlimited monthly budget",
+      "Personal AI assistant 24/7",
+      "Bespoke experience creation",
+      "Multi-person gift automation",
+      "Investment & collectibles AI",
+      "Private jet & yacht bookings",
+      "Dedicated human concierge backup"
     ]
   }
 ];
@@ -72,10 +77,10 @@ export const PricingSection = () => {
             <span className="text-purple-300 font-medium">PRICING PLANS</span>
           </div>
           <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-            Choose Your Level of Luxury
+            Set Budget. Do Nothing. Get Everything.
           </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Don't think, let us do the shopping. Cancel anytime, upgrade anytime.
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            AI learns everything about you and automatically handles all luxury purchases, gifts, and experiences within your budget.
           </p>
         </div>
 
@@ -107,7 +112,10 @@ export const PricingSection = () => {
                       <IconComponent className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-2xl font-bold mb-2">{tier.name}</h3>
-                    <p className="text-gray-400 mb-4">{tier.description}</p>
+                    <p className="text-gray-400 mb-2">{tier.description}</p>
+                    <div className="text-sm text-purple-300 font-semibold mb-4">
+                      Monthly Budget: {tier.budget}
+                    </div>
                     <div className="flex items-baseline justify-center">
                       <span className="text-5xl font-bold">{tier.price}</span>
                       <span className="text-gray-400 ml-2">{tier.period}</span>
@@ -130,9 +138,9 @@ export const PricingSection = () => {
                     className="w-full"
                     size="lg"
                   >
-                    <Gift className="w-4 h-4 mr-2" />
-                    Get Started
-                    <Zap className="w-4 h-4 ml-2" />
+                    <Zap className="w-4 h-4 mr-2" />
+                    Start Automation
+                    <Gift className="w-4 h-4 ml-2" />
                   </Button>
                 </div>
               </Card>
