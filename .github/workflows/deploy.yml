@@ -72,9 +72,7 @@ jobs:
         run: npm ci
 
       - name: Build project
-        run: |
-          export GITHUB_PAGES=true
-          npm run build
+        run: npm run build
         env:
           VITE_STRIPE_PUBLISHABLE_KEY: ${{ secrets.VITE_STRIPE_PUBLISHABLE_KEY || 'pk_test_51QQasmRpmuVDthVYqnwFzoQXlB9Qb68PEhPDvXbD8JYDqdUwmQeYUL4PVwFoVCYcUUDR6G9P0T4SrTnVadUvzqYm00zVlxJRBH' }}
           VITE_API_URL: ${{ secrets.VITE_API_URL || 'https://api.spoiledrotten.ai' }}
