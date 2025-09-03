@@ -10,7 +10,7 @@ import { ModernFooter } from '@/components/ModernFooter';
 import { toast } from 'sonner';
 import { 
   Heart, ShoppingBag, Bookmark, Eye, TrendingUp, 
-  Star, Share2
+  Star, Share2, Sparkles
 } from 'lucide-react';
 
 // Generate more sample items
