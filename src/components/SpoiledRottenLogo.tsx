@@ -34,7 +34,7 @@ export const SpoiledRottenLogo: React.FC<SpoiledRottenLogoProps> = ({
 
   return (
     <div className={cn("flex items-center gap-3", className)}>
-      {showLotus && (
+      {showLotus !== false && (
         <svg
           width={sizes[size].lotus}
           height={sizes[size].lotus}

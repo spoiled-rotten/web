@@ -36,7 +36,17 @@ export const ModernHeader = () => {
             animate={{ width: scrolled ? 'auto' : 'auto' }}
           >
             <AnimatePresence mode="wait">
-              {scrolled ? (
+              {!scrolled ? (
+                <motion.div
+                  key="full"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <SpoiledRottenLogo size="md" variant="gradient" />
+                </motion.div>
+              ) : (
                 <motion.div
                   key="minimal"
                   initial={{ opacity: 0, scale: 0.8 }}
@@ -45,16 +55,6 @@ export const ModernHeader = () => {
                   transition={{ duration: 0.2 }}
                 >
                   <SpoiledRottenLogo size="sm" variant="gradient" showLotus={true} />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="full"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <SpoiledRottenLogo size="md" variant="gradient" showLotus={true} />
                 </motion.div>
               )}
             </AnimatePresence>
