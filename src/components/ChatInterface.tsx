@@ -2,7 +2,9 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
-import { Send, Sparkles, ShoppingBag, Heart, Zap, Gift, Star } from "lucide-react";
+import { useCart } from "@/contexts/CartContext";
+import { toast } from "sonner";
+import { Send, Sparkles, ShoppingBag, Heart, Zap, Gift, Star, Check } from "lucide-react";
 import handbagImage from "@/assets/product-handbag.jpg";
 import jewelryImage from "@/assets/product-jewelry.jpg";
 
@@ -43,6 +45,7 @@ const sampleProducts: ProductSuggestion[] = [
 ];
 
 export const ChatInterface = () => {
+  const { addToCart } = useCart();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
@@ -135,8 +138,28 @@ export const ChatInterface = () => {
                               </div>
                               <h4 className="font-semibold text-white">{product.name}</h4>
                               <p className="text-sm text-gray-300">{product.description}</p>
-                              <Button size="sm" variant="gold" className="w-full mt-2">
-                                <ShoppingBag className="w-4 h-4 mr-2" />
+                              <Button 
+                                size="sm" 
+                                variant="gold" 
+                                className="w-full mt-2 group"
+                                onClick={() => {
+                                  const price = parseFloat(product.price.replace(/[$,]/g, ''));
+                                  addToCart({
+                                    id: product.id,
+                                    name: product.name,
+                                    price: price,
+                                    image: product.image,
+                                    category: product.category
+                                  });
+                                  toast.success(
+                                    <div className="flex items-center gap-2">
+                                      <Check className="w-4 h-4" />
+                                      <span>{product.name} added to cart!</span>
+                                    </div>
+                                  );
+                                }}
+                              >
+                                <ShoppingBag className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
                                 Add to Cart
                               </Button>
                             </div>
