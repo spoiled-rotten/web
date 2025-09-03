@@ -110,8 +110,8 @@ export const FashionFeed = () => {
     }));
     
     // Sort by recommendation score and trending
-    const sortedItems = scoredItems.sort((a: any, b: any) => 
-      b.recommendationScore + b.trendingScore - (a.recommendationScore + a.trendingScore)
+    const sortedItems = scoredItems.sort((a, b) => 
+      (b as any).recommendationScore + b.trendingScore - ((a as any).recommendationScore + a.trendingScore)
     );
     
     setItems(sortedItems);

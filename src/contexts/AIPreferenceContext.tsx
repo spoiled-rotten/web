@@ -72,7 +72,11 @@ export const AIPreferenceProvider: React.FC<{ children: React.ReactNode }> = ({ 
     if (savedTrainingData) {
       try {
         const data = JSON.parse(savedTrainingData);
-        setTrainingData(data.map((d: any) => ({ ...d, timestamp: new Date(d.timestamp) })));
+        setTrainingData(data.map((d: { itemId: string; action: string; timestamp: string }) => ({ 
+          itemId: d.itemId,
+          action: d.action as 'like' | 'dislike' | 'buy' | 'save',
+          timestamp: new Date(d.timestamp) 
+        })));
       } catch (error) {
         console.error('Failed to load training data:', error);
       }
@@ -170,7 +174,7 @@ export const AIPreferenceProvider: React.FC<{ children: React.ReactNode }> = ({ 
         
         return { ...item, similarity };
       })
-      .sort((a: any, b: any) => b.similarity - a.similarity)
+      .sort((a, b) => (b as any).similarity - (a as any).similarity)
       .slice(0, 10);
   };
 
